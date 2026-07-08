@@ -13,7 +13,7 @@ import heroImg from "@/assets/hero-dashboard.jpg";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-
+import logo from "../assets/akvn-logo.png"
 /* ---------- Contact constants ---------- */
 export const PHONE = "+971 58 292 6466";
 export const PHONE_TEL = "+971582926466";
@@ -31,17 +31,16 @@ export function ThemeToggle({ inverse = false }: { inverse?: boolean }) {
     const next = !dark;
     setDark(next);
     document.documentElement.classList.toggle("dark", next);
-    try { localStorage.setItem("theme", next ? "dark" : "light"); } catch {}
+    try { localStorage.setItem("theme", next ? "dark" : "light"); } catch { }
   };
   return (
     <button
       onClick={toggle}
       aria-label="Toggle theme"
-      className={`grid h-10 w-10 place-items-center rounded-full border transition ${
-        inverse
-          ? "border-white/25 bg-white/10 text-white hover:bg-white/20"
-          : "border-border bg-card text-navy hover:bg-secondary"
-      }`}
+      className={`grid h-10 w-10 place-items-center rounded-full border transition ${inverse
+        ? "border-white/25 bg-white/10 text-white hover:bg-white/20"
+        : "border-border bg-card text-navy hover:bg-secondary"
+        }`}
     >
       {dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
     </button>
@@ -83,11 +82,14 @@ export function Nav() {
     <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
       <div className="container-x">
         <div className={`flex items-center justify-between rounded-2xl px-4 py-3 transition-all ${scrolled ? "glass-card shadow-elegant" : "bg-transparent"}`}>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-gold-gradient text-navy shadow-glow">
-              <Sparkles className="h-4 w-4" strokeWidth={2.5} />
-            </span>
-            <span className={`text-lg font-extrabold tracking-tight ${brandTextColor}`}>AKVN<span className="text-gold">Digital</span></span>
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt="AKVN Digital"
+              className="h-15 w-auto  object-contain rounded-sm"
+            />
+            {/* <span className="text-xl font-extrabold tracking-tight text-white">AKVN<span className="text-gold">Digital</span></span> */}
+
           </Link>
           <nav className="hidden items-center gap-8 md:flex">
             {links.map(([l, h]) => (
@@ -207,13 +209,13 @@ export function Hero() {
               </Button>
             </div>
           </Reveal>
-          <Reveal delay={0.4}>
+          {/* <Reveal delay={0.4}>
             <div className="mt-10 flex flex-wrap items-center gap-6 text-sm text-white/60">
               <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-cta" /> Google Certified</div>
               <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-cta" /> Meta Business Partner</div>
               <div className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-cta" /> ROI-Driven</div>
             </div>
-          </Reveal>
+          </Reveal> */}
         </div>
 
         <motion.div style={{ y }} className="relative">
@@ -308,7 +310,7 @@ export function About() {
                 href="https://akvntrading.com"
                 target="_blank"
                 rel="noreferrer"
-                className="font-semibold text-navy underline decoration-gold decoration-2 underline-offset-4 hover:text-gold"
+                className="font-semibold text-navy decoration-gold decoration-2 underline-offset-4 hover:text-gold"
               >
                 akvntrading.com
               </a>
@@ -383,33 +385,51 @@ type Service = {
 };
 
 const services: Service[] = [
-  { icon: LineChart, title: "Digital Marketing", featured: true,
+  {
+    icon: LineChart, title: "Digital Marketing", featured: true,
     desc: "End-to-end performance marketing engineered to grow revenue.",
-    bullets: ["Performance Marketing", "Digital Strategy", "Lead Generation", "Marketing Analytics", "Campaign Optimization", "Conversion Rate Optimization"] },
-  { icon: Target, title: "Google Ads", featured: true,
+    bullets: ["Performance Marketing", "Digital Strategy", "Lead Generation", "Marketing Analytics", "Campaign Optimization", "Conversion Rate Optimization"]
+  },
+  {
+    icon: Target, title: "Google Ads", featured: true,
     desc: "Search, Display, Shopping, YouTube & Remarketing campaigns.",
-    bullets: ["Search Ads", "Display Ads", "Shopping Ads", "Remarketing", "YouTube Ads", "Lead Gen Campaigns", "Conversion Tracking"] },
-  { icon: Megaphone, title: "Meta Ads", featured: true,
+    bullets: ["Search Ads", "Display Ads", "Shopping Ads", "Remarketing", "YouTube Ads", "Lead Gen Campaigns", "Conversion Tracking"]
+  },
+  {
+    icon: Megaphone, title: "Meta Ads", featured: true,
     desc: "Facebook & Instagram advertising built to convert.",
-    bullets: ["Facebook Ads", "Instagram Ads", "Lead Generation", "Retargeting", "Audience Building", "Sales Campaigns", "Creative Optimization"] },
-  { icon: Share2, title: "Social Media Marketing",
+    bullets: ["Facebook Ads", "Instagram Ads", "Lead Generation", "Retargeting", "Audience Building", "Sales Campaigns", "Creative Optimization"]
+  },
+  {
+    icon: Share2, title: "Social Media Marketing",
     desc: "Content, community and monthly management that grows brands.",
-    bullets: ["Content Strategy", "Content Creation", "Community Management", "Instagram Marketing", "Facebook Marketing", "LinkedIn Marketing", "Monthly Management"] },
-  { icon: Search, title: "SEO",
+    bullets: ["Content Strategy", "Content Creation", "Community Management", "Instagram Marketing", "Facebook Marketing", "LinkedIn Marketing", "Monthly Management"]
+  },
+  {
+    icon: Search, title: "SEO",
     desc: "Rank for the keywords that bring qualified traffic and sales.",
-    bullets: ["Technical SEO", "Local SEO", "Keyword Research", "On-page SEO", "Off-page SEO", "Content Optimization", "SEO Audits"] },
-  { icon: Code2, title: "Website Development",
+    bullets: ["Technical SEO", "Local SEO", "Keyword Research", "On-page SEO", "Off-page SEO", "Content Optimization", "SEO Audits"]
+  },
+  {
+    icon: Code2, title: "Website Development",
     desc: "High-performance websites, landing pages and e-commerce.",
-    bullets: ["Corporate Websites", "Landing Pages", "Business Websites", "E-Commerce Stores", "Custom Websites", "Website Redesign", "UI/UX Design"] },
-  { icon: Smartphone, title: "Mobile App Development",
+    bullets: ["Corporate Websites", "Landing Pages", "Business Websites", "E-Commerce Stores", "Custom Websites", "Website Redesign", "UI/UX Design"]
+  },
+  {
+    icon: Smartphone, title: "Mobile App Development",
     desc: "Native and cross-platform apps for iOS and Android.",
-    bullets: ["Android Apps", "iOS Apps", "Cross-platform Apps", "Business Apps"] },
-  { icon: ShoppingBag, title: "Media Buying",
+    bullets: ["Android Apps", "iOS Apps", "Cross-platform Apps", "Business Apps"]
+  },
+  {
+    icon: ShoppingBag, title: "Media Buying",
     desc: "Strategic campaign planning across all major ad channels.",
-    bullets: ["Digital Campaign Planning", "Audience Targeting", "Campaign Optimization", "ROI Improvement", "Performance Tracking"] },
-  { icon: Bot, title: "AI Marketing Solutions",
+    bullets: ["Digital Campaign Planning", "Audience Targeting", "Campaign Optimization", "ROI Improvement", "Performance Tracking"]
+  },
+  {
+    icon: Bot, title: "AI Marketing Solutions",
     desc: "Chatbots, WhatsApp automation and AI-powered workflows.",
-    bullets: ["AI Chatbots", "Lead Qualification Bots", "AI Customer Support", "WhatsApp Automation", "Marketing Automation", "CRM Automation", "Appointment Booking", "AI Content Assistance"] },
+    bullets: ["AI Chatbots", "Lead Qualification Bots", "AI Customer Support", "WhatsApp Automation", "Marketing Automation", "CRM Automation", "Appointment Booking", "AI Content Assistance"]
+  },
 ];
 
 export function Services() {
@@ -431,11 +451,10 @@ export function Services() {
               key={s.title}
               initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: (i % 3) * 0.08, duration: 0.6 }} viewport={{ once: true, margin: "-60px" }}
-              className={`group relative overflow-hidden rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 ${
-                s.featured
-                  ? "bg-navy text-white shadow-elegant"
-                  : "glass-card shadow-glass hover:shadow-elegant"
-              }`}
+              className={`group relative overflow-hidden rounded-3xl p-8 transition-all duration-500 hover:-translate-y-1 ${s.featured
+                ? "bg-navy text-white shadow-elegant"
+                : "glass-card shadow-glass hover:shadow-elegant"
+                }`}
             >
               {s.featured && (
                 <span className="absolute right-5 top-5 rounded-full bg-gold-gradient px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-navy">Featured</span>
@@ -551,23 +570,40 @@ export function Process() {
 /* ---------- Projects ---------- */
 export function Projects() {
   const items = [
-    { t: "Google Ads Campaign", c: "SaaS · Dubai", tag: "PPC",
-      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" },
-    { t: "Real Estate Website", c: "Property · UAE", tag: "Web",
-      img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80" },
-    { t: "Corporate Business Site", c: "B2B · Abu Dhabi", tag: "Web",
-      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" },
-    { t: "Restaurant Marketing", c: "F&B · Dubai", tag: "Social",
-      img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" },
-    { t: "Medical Clinic SEO", c: "Healthcare", tag: "SEO",
-      img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" },
-    { t: "E-Commerce Store", c: "Retail", tag: "Shopify",
-      img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80" },
-    { t: "Meta Ads Campaign", c: "DTC Brand", tag: "Meta",
-      img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=800&q=80" },
-    { t: "Landing Page Design", c: "Lead Gen", tag: "CRO",
-      img: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=800&q=80" },
+    {
+      t: "Google Ads Campaign", c: "SaaS · Dubai", tag: "PPC",
+      img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "Real Estate Website", c: "Property · UAE", tag: "Web",
+      img: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "Corporate Business Site", c: "B2B · Abu Dhabi", tag: "Web",
+      img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "Restaurant Marketing", c: "F&B · Dubai", tag: "Social",
+      img: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "Medical Clinic SEO", c: "Healthcare", tag: "SEO",
+      img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "E-Commerce Store", c: "Retail", tag: "Shopify",
+      img: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "Meta Ads Campaign", c: "DTC Brand", tag: "Meta",
+      img: "https://images.unsplash.com/photo-1611926653458-09294b3142bf?auto=format&fit=crop&w=800&q=80"
+    },
+    {
+      t: "Landing Page Design", c: "Lead Gen", tag: "CRO",
+      img: "https://images.unsplash.com/photo-1559028012-481c04fa702d?auto=format&fit=crop&w=800&q=80"
+    },
   ];
+
   return (
     <section id="work" className="bg-secondary/50 py-24 md:py-32">
       <div className="container-x">
@@ -592,7 +628,7 @@ export function Projects() {
                 <div className="relative h-48 overflow-hidden">
                   <img src={p.img} alt={p.t} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-110" />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-navy backdrop-blur">{p.tag}</span>
+                  <span className="absolute left-4 top-4 rounded-full bg-white/90 dark:bg-navy/80 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-navy backdrop-blur">{p.tag}</span>
                   <ArrowRight className="absolute right-4 top-4 h-5 w-5 -translate-x-2 text-white opacity-0 transition group-hover:translate-x-0 group-hover:opacity-100" />
                 </div>
                 <div className="p-5">
@@ -743,13 +779,13 @@ export function Contact() {
                 <div className="font-semibold text-navy">{PHONE}</div>
               </div>
             </a>
-            <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:border-gold hover:shadow-elegant">
+            {/* <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:border-gold hover:shadow-elegant">
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-cta text-white"><MessageCircle className="h-5 w-5" /></div>
               <div>
                 <div className="text-xs uppercase tracking-wider text-navy/50">WhatsApp</div>
                 <div className="font-semibold text-navy">{PHONE}</div>
               </div>
-            </a>
+            </a> */}
             <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 rounded-2xl border border-border bg-card p-4 transition hover:border-gold hover:shadow-elegant">
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-navy text-gold"><Mail className="h-5 w-5" /></div>
               <div>
@@ -828,28 +864,35 @@ function Field({ label, children, className = "" }: { label: string; children: R
 /* ---------- Footer ---------- */
 export function Footer() {
   const linkGroups: Array<{ title: string; items: Array<{ label: string; to: string }> }> = [
-    { title: "Company", items: [
-      { label: "Home", to: "/" }, { label: "About Us", to: "/about" },
-      { label: "Projects", to: "/work" }, { label: "Contact", to: "/contact" },
-    ]},
-    { title: "Services", items: [
-      { label: "Digital Marketing", to: "/services" }, { label: "Google Ads", to: "/services" },
-      { label: "Meta Ads", to: "/services" }, { label: "SEO", to: "/services" },
-      { label: "Social Media", to: "/services" }, { label: "Website Development", to: "/services" },
-      { label: "AI Solutions", to: "/services" },
-    ]},
+    {
+      title: "Company", items: [
+        { label: "Home", to: "/" }, { label: "About Us", to: "/about" },
+        { label: "Projects", to: "/work" }, { label: "Contact", to: "/contact" },
+      ]
+    },
+    {
+      title: "Services", items: [
+        { label: "Digital Marketing", to: "/services" }, { label: "Google Ads", to: "/services" },
+        { label: "Meta Ads", to: "/services" }, { label: "SEO", to: "/services" },
+        { label: "Social Media", to: "/services" }, { label: "Website Development", to: "/services" },
+        { label: "AI Solutions", to: "/services" },
+      ]
+    },
   ];
   return (
     <footer className="bg-navy-deep pt-20 pb-10 text-white/80">
       <div className="container-x">
         <div className="grid gap-12 md:grid-cols-[1.4fr_2fr]">
           <div>
-            <Link to="/" className="flex items-center gap-2">
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-gold-gradient text-navy shadow-glow">
-                <Sparkles className="h-5 w-5" strokeWidth={2.5} />
-              </span>
-              <span className="text-xl font-extrabold tracking-tight text-white">AKVN<span className="text-gold">Digital</span></span>
-            </Link>
+            <Link to="/" className="flex items-center gap-3">
+            <img
+              src={logo}
+              alt="AKVN Digital"
+              className="h-15 w-auto  object-contain rounded-sm"
+            />
+            <span className="text-xl font-extrabold tracking-tight text-white">AKVN<span className="text-gold">Digital</span></span>
+
+          </Link>
             <p className="mt-4 max-w-sm text-sm text-white/60">
               Driving business growth through digital marketing. Dubai&apos;s trusted partner for Google Ads, Meta Ads, SEO and web development. A division of AKVN Trading FZ LLC.
             </p>
@@ -859,13 +902,13 @@ export function Footer() {
               <a href={WHATSAPP_URL} target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-gold"><MessageCircle className="h-4 w-4 text-gold" /> WhatsApp</a>
               <a href={`mailto:${EMAIL}`} className="flex items-center gap-2 hover:text-gold"><Mail className="h-4 w-4 text-gold" /> {EMAIL}</a>
             </div>
-            <div className="mt-6 flex gap-3">
+            {/* <div className="mt-6 flex gap-3">
               {[Instagram, Facebook, Linkedin, Twitter].map((Ic, i) => (
                 <a key={i} href="#" aria-label="social" className="grid h-10 w-10 place-items-center rounded-xl bg-white/5 text-white/70 transition hover:bg-gold-gradient hover:text-navy">
                   <Ic className="h-4 w-4" />
                 </a>
               ))}
-            </div>
+            </div> */}
           </div>
           <div className="grid gap-8 sm:grid-cols-3">
             {linkGroups.map((g) => (

@@ -24,7 +24,7 @@ function LandingPage() {
       <Process />
       <Projects />
       <Industries />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <CTABanner />
       <Contact />
     </SiteShell>
