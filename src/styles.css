@@ -85,6 +85,39 @@
   --shadow-glass: 0 8px 32px oklch(0.18 0.05 260 / 0.12);
 }
 
+/* ---------- Dark theme overrides ---------- */
+.dark {
+  --background: oklch(0.16 0.04 258);
+  --foreground: oklch(0.97 0.01 250);
+  --card: oklch(0.22 0.05 260);
+  --card-foreground: oklch(0.97 0.01 250);
+  --popover: oklch(0.22 0.05 260);
+  --popover-foreground: oklch(0.97 0.01 250);
+  --secondary: oklch(0.24 0.05 260);
+  --secondary-foreground: oklch(0.97 0.01 250);
+  --muted: oklch(0.24 0.05 260);
+  --muted-foreground: oklch(0.75 0.03 258);
+  --border: oklch(0.32 0.03 258);
+  --input: oklch(0.32 0.03 258);
+}
+
+/* In dark mode, brand `text-navy` utilities should read as light text.
+   We override the specific classes rather than the --navy token so
+   `bg-navy`, `bg-navy-deep` and other brand surfaces stay dark. */
+.dark .text-navy { color: oklch(0.97 0.01 250); }
+.dark .text-navy\/50 { color: color-mix(in oklab, oklch(0.97 0.01 250) 50%, transparent); }
+.dark .text-navy\/60 { color: color-mix(in oklab, oklch(0.97 0.01 250) 60%, transparent); }
+.dark .text-navy\/65 { color: color-mix(in oklab, oklch(0.97 0.01 250) 65%, transparent); }
+.dark .text-navy\/70 { color: color-mix(in oklab, oklch(0.97 0.01 250) 70%, transparent); }
+.dark .text-navy\/75 { color: color-mix(in oklab, oklch(0.97 0.01 250) 75%, transparent); }
+.dark .text-navy\/80 { color: color-mix(in oklab, oklch(0.97 0.01 250) 80%, transparent); }
+.dark .text-navy\/85 { color: color-mix(in oklab, oklch(0.97 0.01 250) 85%, transparent); }
+
+.dark .glass-card {
+  background: color-mix(in oklab, black 55%, transparent);
+  border: 1px solid color-mix(in oklab, white 10%, transparent);
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
