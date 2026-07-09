@@ -22,7 +22,7 @@ function WorkPage() {
         subtitle="A snapshot of campaigns and builds we've shipped for UAE brands."
       />
       <Projects />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <CTABanner />
     </SiteShell>
   );

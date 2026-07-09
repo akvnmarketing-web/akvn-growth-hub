@@ -804,18 +804,18 @@ export function Contact() {
               <div className="grid h-11 w-11 place-items-center rounded-xl bg-navy text-gold"><Clock className="h-5 w-5" /></div>
               <div>
                 <div className="text-xs uppercase tracking-wider text-navy/50">Business Hours</div>
-                <div className="font-semibold text-navy">Sun–Thu · 9:00 – 18:00 GST</div>
+                <div className="font-semibold text-navy">Mon-Sat · 9:00 AM – 6:00 PM GST</div>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 flex gap-3">
+          {/* <div className="mt-6 flex gap-3">
             {[Instagram, Facebook, Linkedin, Twitter].map((Ic, i) => (
               <a key={i} href="#" aria-label="Social" className="grid h-11 w-11 place-items-center rounded-xl border border-border bg-card text-navy transition hover:bg-navy hover:text-gold">
                 <Ic className="h-4 w-4" />
               </a>
             ))}
-          </div>
+          </div> */}
         </Reveal>
 
         <Reveal delay={0.1}>
