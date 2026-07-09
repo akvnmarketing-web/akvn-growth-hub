@@ -26,7 +26,7 @@ function LandingPage() {
       <Industries />
       {/* <Testimonials /> */}
       <CTABanner />
-      <Contact />
+      {/* <Contact /> */}
     </SiteShell>
   );
 }
